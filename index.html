@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simulador de Trabajo Mecánico</title>
+  <!-- Enlazamos el archivo de estilos CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Contenedor principal del simulador -->
+  <div class="container">
+    <!-- Encabezado con título y subtítulo -->
+    <header>
+      <h1>Simulador de Trabajo Mecánico</h1>
+      <p class="subtitle">Visualiza la física en acción</p>
+    </header>
 
+    <!-- Diseño en dos columnas: simulación (izq) y controles (der) -->
+    <div class="main-grid">
+      <!-- Panel izquierdo: Canvas y botones de control -->
+      <div class="panel simulation-panel">
+        <canvas id="simulationCanvas" width="800" height="450"></canvas>
+        <div class="controls">
+          <button id="playBtn" class="btn-play">
+            <span id="playIcon">▶</span> Iniciar
+          </button>
+          <button id="resetBtn" class="btn-reset">↺ Reiniciar</button>
+        </div>
+      </div>
+
+      <!-- Panel derecho: controles deslizantes, resultados y fórmula -->
+      <div class="controls-panel">
+        <!-- Sección de parámetros ajustables -->
+        <div class="panel parameters">
+          <h3>Parámetros</h3>
+          <div class="input-group force">
+            <label>Fuerza (N)</label>
+            <input type="range" id="forceSlider" min="0" max="100" value="50" />
+            <div class="value-display" id="forceValue">50 N</div>
+          </div>
+          <div class="input-group angle">
+            <label>Ángulo (°)</label>
+            <input type="range" id="angleSlider" min="-90" max="90" value="0" />
+            <div class="value-display" id="angleValue">0°</div>
+          </div>
+          <div class="input-group distance">
+            <label>Distancia (m)</label>
+            <input type="range" id="distanceSlider" min="1" max="10" step="0.5" value="5" />
+            <div class="value-display" id="distanceValue">5 m</div>
+          </div>
+        </div>
+
+        <!-- Sección de resultados calculados -->
+        <div class="panel results">
+          <h3>Resultados</h3>
+          <div class="result-box">
+            <div class="result-label">Trabajo Realizado</div>
+            <div class="work-value" id="workResult">250.00 J</div>
+          </div>
+          <div class="result-box">
+            <div class="result-label">Componente Horizontal (Fx)</div>
+            <div class="fx-value" id="fxResult">Fx = 50.00 N</div>
+          </div>
+          <div class="result-box">
+            <div class="result-label">Componente Vertical (Fy)</div>
+            <div class="fy-value" id="fyResult">Fy = 0.00 N</div>
+          </div>
+        </div>
+
+        <!-- Botón para mostrar/ocultar la fórmula -->
+        <button id="infoBtn" class="btn-info">ℹ Fórmula del Trabajo</button>
+        <div id="infoBox" class="info-box" style="display: none;">
+          <h4>Trabajo Mecánico</h4>
+          <p>El trabajo es la energía transferida cuando una fuerza mueve un objeto:</p>
+          <div class="formula">W = F · d · cos(θ)</div>
+          <ul>
+            <li>• <span class="var-w">W</span>: Trabajo (Joules)</li>
+            <li>• <span class="var-f">F</span>: Fuerza aplicada (Newtons)</li>
+            <li>• <span class="var-d">d</span>: Desplazamiento (metros)</li>
+            <li>• <span class="var-theta">θ</span>: Ángulo entre la fuerza y la dirección del movimiento</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie de página -->
+    <div class="footer">
+      🎯 Proyecto de Física - Trabajo Mecánico | Visualización Interactiva
+    </div>
+  </div>
+
+  <!-- Enlazamos la lógica del simulador -->
+  <script src="js/simulation.js"></script>
+</body>
+</html>
